@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Enabled WordPress Campaigns | RedWagon Agency</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: #ffffff;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    header {
+      background: #ffffff;
+      padding: 20px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #e74c3c;
+      text-decoration: none;
+    }
+    .nav {
+      display: flex;
+      gap: 30px;
+    }
+    .nav a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav a:hover {
+      color: #e74c3c;
+    }
+    .hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 150px 0 100px;
+      text-align: center;
+      margin-top: 80px;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .hero .subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 40px;
+      opacity: 0.9;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-button {
+      background: #e74c3c;
+      color: white;
+      padding: 18px 40px;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      display: inline-block;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+    }
+    .cta-button:hover {
+      background: #c0392b;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+    }
+    .features {
+      padding: 100px 0;
+      background: #f8f9fa;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #7f8c8d;
+      margin-bottom: 60px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+    .feature-card {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      color: white;
+    }
+    .feature-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+    .feature-card p {
+      color: #7f8c8d;
+      line-height: 1.7;
+    }
+    .benefits {
+      padding: 100px 0;
+      background: white;
+    }
+    .benefits-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .benefits-text h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+    .benefits-list {
+      list-style: none;
+      margin-top: 30px;
+    }
+    .benefits-list li {
+      padding: 15px 0;
+      border-bottom: 1px solid #ecf0f1;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .check-icon {
+      width: 20px;
+      height: 20px;
+      background: #27ae60;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.8rem;
+    }
+    .stats {
+      background: #2c3e50;
+      color: white;
+      padding: 80px 0;
+      text-align: center;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+    }
+    .stat-item h3 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #e74c3c;
+      margin-bottom: 10px;
+    }
+    .stat-item p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    .cta-section {
+      background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+      color: white;
+      padding: 80px 0;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .cta-section p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+    .cta-white {
+      background: white;
+      color: #e74c3c;
+      padding: 18px 40px;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      display: inline-block;
+      transition: all 0.3s;
+    }
+    .cta-white:hover {
+      background: #f8f9fa;
+      transform: translateY(-2px);
+    }
+    footer {
+      background: #1a1a1a;
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+    }
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .benefits-content {
+        grid-template-columns: 1fr;
+      }
+      .nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="#" class="logo">RedWagon</a>
+        <nav class="nav">
+          <a href="#features">Features</a>
+          <a href="#benefits">Benefits</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>AI-Powered WordPress Campaigns</h1>
+      <p class="subtitle">Transform your WordPress site with intelligent, data-driven campaigns that convert visitors into customers automatically</p>
+      <a href="#contact" class="cta-button">Start Your AI Campaign</a>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="container">
+      <h2 class="section-title">Intelligent Campaign Features</h2>
+      <p class="section-subtitle">Our AI technology learns from your audience behavior to create personalized experiences that drive results</p>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <h3>Smart Content Optimization</h3>
+          <p>AI analyzes user behavior and automatically adjusts content, headlines, and CTAs to maximize engagement and conversions for each visitor.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Predictive Targeting</h3>
+          <p>Machine learning algorithms identify your highest-value prospects and deliver personalized campaigns at the perfect moment in their journey.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Real-Time Analytics</h3>
+          <p>Get instant insights into campaign performance with AI-powered analytics that reveal what's working and automatically optimize for better results.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Automated A/B Testing</h3>
+          <p>Our AI continuously tests different campaign variations, learning what resonates with your audience and implementing winning strategies automatically.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <h3>Dynamic Personalization</h3>
+          <p>Every visitor sees a unique experience tailored to their interests, behavior, and stage in the customer journey, powered by advanced AI algorithms.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">📈</div>
+          <h3>Performance Prediction</h3>
+          <p>AI forecasts campaign performance and suggests optimizations before you launch, ensuring maximum ROI from day one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="benefits" id="benefits">
+    <div class="container">
+      <div class="benefits-content">
+        <div class="benefits-text">
+          <h2>Why Choose AI-Enabled Campaigns?</h2>
+          <p>Traditional marketing campaigns rely on guesswork. Our AI-powered approach uses data science and machine learning to deliver measurable results that scale with your business.</p>
+          
+          <ul class="benefits-list">
+            <li>
+              <span class="check-icon">✓</span>
+              <span>300% increase in conversion rates on average</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span>Automated optimization saves 20+ hours per week</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span>Real-time personalization for every visitor</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span>Seamless WordPress integration in minutes</span>
+            </li>
+            <li>
+              <span class="check-icon">✓</span>
+              <span>Advanced analytics and reporting dashboard</span>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="benefits-visual">
+          <div style="background: linear-gradient(135deg, #667eea, #764ba2); height: 400px; border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; text-align: center; padding: 40px;">
+            <div>
+              <h3 style="margin-bottom: 20px;">AI Campaign Dashboard</h3>
+              <p>Real-time insights, automated optimization, and predictive analytics all in one powerful interface.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <h3>300%</h3>
+          <p>Average Conversion Increase</p>
+        </div>
+        <div class="stat-item">
+          <h3>50+</h3>
+          <p>WordPress Sites Optimized</p>
+        </div>
+        <div class="stat-item">
+          <h3>24/7</h3>
+          <p>AI Optimization Running</p>
+        </div>
+        <div class="stat-item">
+          <h3>99.9%</h3>
+          <p>Uptime Guarantee</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" id="contact">
+    <div class="container">
+      <h2>Ready to Transform Your WordPress Campaigns?</h2>
+      <p>Join forward-thinking businesses using AI to drive unprecedented growth and engagement.</p>
+      <a href="mailto:hello@redwagon.agency" class="cta-white">Get Started Today</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 RedWagon Agency. All rights reserved. | Powered by AI Innovation</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add scroll effect to header
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(255, 255, 255, 0.95)';
+        header.style.backdropFilter = 'blur(10px)';
+      } else {
+        header.style.background = '#ffffff';
+        header.style.backdropFilter = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
